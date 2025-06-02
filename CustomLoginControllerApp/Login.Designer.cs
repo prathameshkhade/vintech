@@ -37,6 +37,7 @@
             loginController1.Name = "loginController1";
             loginController1.Size = new Size(357, 165);
             loginController1.TabIndex = 0;
+            loginController1.Load += loginController1_Load;
             // 
             // Login
             // 

@@ -5,16 +5,16 @@ namespace CustomLoginControllerApp
         public Login()
         {
             InitializeComponent();
-            loginController1.LoginClicked += OnLoginClicked;
         }
 
-        public void OnLoginClicked(object sender, EventArgs e)
+        public void OnLoginClicked(object? sender, EventArgs? e)
         {
-            String uname = loginController1.Controls["txtUsername"].Text;
-            String pass = loginController1.Controls["txtPassword"].Text;
+            String uname = loginController1.Username;
+            String pass = loginController1.Password;
 
-            if (!String.IsNullOrEmpty(uname) && !String.IsNullOrEmpty(pass)) {
-                if(uname == "elliot" && pass =="P@ssw0rd")
+            if (!String.IsNullOrEmpty(uname) && !String.IsNullOrEmpty(pass))
+            {
+                if (uname == "elliot" && pass == "P@ssw0rd")
                 {
                     MessageBox.Show("Login Successful!");
                 }
@@ -23,6 +23,11 @@ namespace CustomLoginControllerApp
                     MessageBox.Show("Username or password maybe incorrect");
                 }
             }
+        }
+
+        private void loginController1_Load(object sender, EventArgs e)
+        {
+            loginController1.LoginClicked += OnLoginClicked;
         }
     }
 }

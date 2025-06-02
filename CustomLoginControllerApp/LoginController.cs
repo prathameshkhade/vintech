@@ -9,6 +9,8 @@ namespace CustomLoginControllerApp
 
         // Properties
         public event EventHandler? LoginClicked;
+        public String Username => txtUsername.Text;
+        public String Password => txtPassword.Text;
 
         public LoginController()
         {
