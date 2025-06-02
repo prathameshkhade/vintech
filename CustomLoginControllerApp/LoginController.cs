@@ -8,7 +8,7 @@ namespace CustomLoginControllerApp
     {
 
         // Properties
-        private event EventHandler? LoginClicked;
+        public event EventHandler? LoginClicked;
 
         public LoginController()
         {
