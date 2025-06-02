@@ -1,0 +1,42 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.bin
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio hidden directory
+.vs/
+
+# Debugger files
+*.vsdbg
+
+# ASP.NET settings
+.settings/
+
+# Configuration files (exclude local or sensitive ones only)
+*.config
+!app.config
+!web.config
+
+# Project-specific user files
+*.user.vbproj
+*.user.csproj
+
+# Other user-specific files
+*.user
+*.tss
+
+# Windows image thumbnail cache
+Thumbs.db
+
+# Mac system files
+.DS_Store
+
