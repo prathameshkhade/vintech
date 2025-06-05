@@ -1,5 +1,4 @@
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace LoginApp
 {
@@ -15,19 +14,12 @@ namespace LoginApp
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
-            var services = new ServiceCollection();
+            // Configure Serilog for logging
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("../../../../Logs/Auth-.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
 
-            // Configure the logging service
-            services.AddLogging(builder => {
-                builder.AddConsole();
-                builder.AddFile("../../../../logs/Login-{Date}.log", LogLevel.Information);
-            });
-
-            // Service Provider
-            var serviceProvider = services.BuildServiceProvider();
-            var logger = serviceProvider.GetRequiredService<ILogger<Login>>();
-
-            Application.Run(new Login(logger));
+            Application.Run(new Login());
         }
     }
 }
