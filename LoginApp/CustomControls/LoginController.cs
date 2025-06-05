@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Text.RegularExpressions;
+using LoggingLib;
 
 namespace CustomControls
 {
@@ -23,6 +24,7 @@ namespace CustomControls
             {
                 txt.Clear();
             }
+            Logger.LogInfo("Login Form cleared by {Username}", Username ?? "Empty");
         }
 
         private bool ValidatePasswordString(string pass)
