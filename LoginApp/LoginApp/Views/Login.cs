@@ -1,32 +1,36 @@
 using LoggingLib;
+using LoginApp.Models;
+using LoginApp.Controller;
 
 namespace LoginApp
 {
     public partial class Login : Form
     {
+        private readonly UserController _userController;
         public Login()
         {
             InitializeComponent();
+            _userController = new UserController();
             Logger.LogInfo("Application started at {Timestamp}", DateTime.Now);
         }
 
         public void OnLoginClicked(object? sender, EventArgs? e)
         {
-            String uname = loginController1.Username;
-            String pass = loginController1.Password;
-
-            if(!String.IsNullOrEmpty(uname) && !String.IsNullOrEmpty(pass))
+            User user = new User
             {
-                if (uname == "elliot" && pass == "P@ssw0rd")
-                {
-                    MessageBox.Show("Login Successful!");
-                    Logger.LogInfo("Login success: {Username} at {Timestamp}", uname, DateTime.Now);
-                }
-                else
-                {
-                    MessageBox.Show("Username or password maybe incorrect");
-                    Logger.LogLoginFailed(uname, "Incorrect Username or password!");
-                }
+                Username = loginController1.Username,
+                Password = loginController1.Password
+            };
+
+            if (_userController.Authenticate(user))
+            {
+                MessageBox.Show("Login Successful");
+                Logger.LogLoginSuccess(user.Username);
+            }
+            else
+            {
+                MessageBox.Show("Incorrect Username or password!");
+                Logger.LogLoginFailed(user.Username, "Incorrect username or password");
             }
         }
 
